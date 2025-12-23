@@ -28,3 +28,11 @@ new_data['Home Score'] = pd.to_numeric(new_data['Home Score'])
 new_data['Away Score'] = pd.to_numeric(new_data['Away Score'])
 print(new_data.dtypes)
 print()
+
+print('=' * 30)
+print("Step 3: Correct Wrong Values in Result")
+print('=' * 30)
+new_data.loc[:, 'Result'] = np.where(new_data['Home Score'] > new_data['Away Score'], 'Home Win', np.where(new_data['Home Score'] < new_data['Away Score'], 'Away Win', 'Draw'))
+print(new_data['Result'].value_counts())
+print()
+
