@@ -3,4 +3,28 @@ import pandas as pd
 
 initial_data = pd.read_csv('./dirty_sports_match_dataset_1500_rows.csv')
 
-print("Initial Data Shape:", initial_data.shape)
+print('=' * 30)
+print("Step 1: Drop Missing Values")
+print('=' * 30)
+print("Initial missing values count:")
+print('-' * 30)
+print(initial_data.isna().sum())
+print()
+new_data = initial_data.dropna(subset = ['Home Score', 'Away Score']).copy()
+print("After:")
+print('-' * 30)
+print(new_data.isna().sum())
+print()
+
+print('=' * 30)
+print("Step 2: Convert Home Score and Away Score to Numeric")
+print('=' * 30)
+new_data.loc[:, ['Home Score', 'Away Score']] = new_data[['Home Score', 'Away Score']].replace({
+    'Two': '2',
+    'Three': '3'
+})
+
+new_data['Home Score'] = pd.to_numeric(new_data['Home Score'])
+new_data['Away Score'] = pd.to_numeric(new_data['Away Score'])
+print(new_data.dtypes)
+print()
