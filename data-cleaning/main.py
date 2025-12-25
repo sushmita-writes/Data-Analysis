@@ -36,3 +36,16 @@ new_data.loc[:, 'Result'] = np.where(new_data['Home Score'] > new_data['Away Sco
 print(new_data['Result'].value_counts())
 print()
 
+
+print('=' * 30)
+print("Step 4: Clean Wrong Format Data in 'Match Date'")
+print('=' * 30)
+print("Wrong Formats in 'Match Date':")
+print(initial_data['Match Date'].value_counts())
+
+print("\nBefore Cleaning:")
+print(new_data[new_data['Match Date'] == '26-11-2024'])
+
+print("\nAfter Cleaning:")
+new_data['Match Date'] = pd.to_datetime(new_data['Match Date'], format='mixed')
+print(new_data.loc[1438, 'Match Date'])
