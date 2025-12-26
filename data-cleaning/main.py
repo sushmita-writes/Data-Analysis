@@ -1,5 +1,6 @@
 import numpy as np
 import pandas as pd
+import matplotlib.pyplot as plt
 
 initial_data = pd.read_csv('./dirty_sports_match_dataset_1500_rows.csv')
 
@@ -66,3 +67,25 @@ new_data['Away Team'] = new_data['Away Team'].str.strip().str.title()
 print(new_data['Home Team'].value_counts())
 print(new_data['Away Team'].value_counts())
 print()
+
+print('=' * 30)
+print("Step 6: Numerical Data Description")
+print('=' * 30)
+print(new_data.describe(include=[np.number]))
+print()
+
+print('=' * 30)
+print("Step 7: Checking for Outliers")
+print('=' * 30)
+plt.figure(figsize=(6, 8))
+plt.subplot(2, 1, 1)
+plt.boxplot(new_data['Home Score'], vert=False)
+plt.xlabel('Home Score')
+
+plt.subplot(2, 1, 2)
+plt.boxplot(new_data['Away Score'], vert=False)
+plt.xlabel('Away Score')
+
+plt.show()
+
+new_data.to_csv('./cleaned_sports_match_dataset.csv', index=False)
