@@ -5,8 +5,8 @@
    - Tools: Python, Pandas, NumPy, Matplotlib
 
 2. **[Data Cleaning](./data-cleaning)**:
-   - input: [dirty_sports_match_dataset](dirty_sports_match_dataset_1500_rows.csv)
-   - output: [cleaned_sports_match_dataset](cleaned_sports_match_dataset.csv)
+   - input: [dirty_sports_match_dataset](data-cleaning/dirty_sports_match_dataset_1500_rows.csv)
+   - output: [cleaned_sports_match_dataset](data-cleaning/cleaned_sports_match_dataset.csv)
 
 # Python Libraries Used
 - **Pandas**
